@@ -124,7 +124,7 @@ namespace Roommates
                             }
 
                             Console.WriteLine("Select the ID of the chore you want: ");
-                            int roomId = int.Parse(Console.ReadLine());
+                            int chooreId = int.Parse(Console.ReadLine());
                             List<Roommate> roommatez = roommateRepo.GetAll();
                             foreach (Roommate roomer in roommatez)
                             {
@@ -133,7 +133,11 @@ namespace Roommates
 
                             Console.WriteLine("Select the ID of the roommate you want to assign to: ");
                             int roomieId = int.Parse(Console.ReadLine());
+                            choreRepo.AssignChore(roomieId, chooreId);
 
+                            Console.WriteLine($" SUCCESS!: {roommateRepo.GetById(roomieId).FirstName} has been assigned to {choreRepo.GetById(chooreId).Name}");
+                            Console.Write("Press any key to continue");
+                            Console.ReadKey();
                             break;
                         case ("Exit"):
                             runProgram = false;
